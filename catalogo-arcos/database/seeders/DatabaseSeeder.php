@@ -18,22 +18,27 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Admin',
             'email' => 'admin@example.com',
-            'password' => Hash::make('password'), // Contraseña: password
+            'password' => Hash::make('admin'), // Contraseña: admin
         ]);
 
         User::create([
-            'name' => 'Usuario1',
-            'email' => 'usuario1@example.com',
-            'password' => Hash::make('password'),
+            'name' => 'Pepe',
+            'email' => 'pepe@example.com',
+            'password' => Hash::make('pepe'),
         ]);
 
         User::create([
-            'name' => 'Usuario2',
-            'email' => 'usuario2@example.com',
-            'password' => Hash::make('password'),
+            'name' => 'Yohanna',
+            'email' => 'yohanna@example.com',
+            'password' => Hash::make('yohanna'),
         ]);
 
         // Llamar al Seeder de Arcos
         $this->call(ArcoSeeder::class);
+
+        // Llamar al Seeder de Galería
+        $this->call([
+            GallerySeeder::class,
+        ]);
     }
 }

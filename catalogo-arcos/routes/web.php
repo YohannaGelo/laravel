@@ -4,13 +4,24 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ArcoController;
+use App\Models\Gallery;
 
 // Ruta principal (accesible para todos)
-Route::get('/', [ArcoController::class, 'index'])->name('home');
+// Route::get('/', [ArcoController::class, 'index'])->name('home');
+Route::get('/', function () {
+    $arcos = App\Models\Arco::all();
+    return view('home', compact('arcos'));
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/gallery', function () {
+    $imagenes = Gallery::all();
+    // dd($imagenes);
+    return view('gallery', compact('imagenes'));
+})->name('gallery');
 
 // Rutas protegidas
 Route::middleware('auth')->group(function () {
@@ -25,6 +36,7 @@ Route::middleware('auth')->group(function () {
 
 // Rutas públicas de arcos (accesibles para todos)
 Route::resource('arcos', ArcoController::class)->only(['index', 'show']);
+
 
 // Rutas de autenticación (generadas por Breeze)
 require __DIR__.'/auth.php';
