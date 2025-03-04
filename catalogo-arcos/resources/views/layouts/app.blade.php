@@ -28,7 +28,7 @@
 
     <!-- Footer -->
     <footer>
-        <!-- Aquí va el footer de la plantilla -->
+        
     </footer>
 
     <!-- Bootstrap JS y dependencias -->

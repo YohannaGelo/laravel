@@ -4,7 +4,9 @@
 <div class="container">
     <h1 class="my-4">Editar Arco: {{ $arco->nombre }}</h1>
     <form action="{{ route('arcos.update', $arco->id) }}" method="POST" enctype="multipart/form-data">
+        <!-- Directiva para asegurar que los datos del formulario son correctos (es un token) -->    
         @csrf
+        <!-- Directiva para incluir el método que usará el formulario -->
         @method('PUT')
         <div class="form-group">
             <label for="nombre">Nombre</label>

@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
+@section('title', 'Inicio')
+
 @section('content')
 <div class="container">
     <h1 class="my-4">Catálogo de Arcos</h1>
     @auth
-        <a href="{{ route('arcos.create') }}" class="btn btn-primary mb-4">Agregar Arco</a>
+        <a href="{{ route('arcos.create') }}" class="btn btn-secondary mb-4">Agregar Arco</a>
     @endauth
     <div class="row">
         @foreach ($arcos as $arco)
@@ -18,7 +20,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $arco->nombre }}</h5>
                         <p class="card-text">{{ $arco->tipo }}</p>
-                        <a href="{{ route('arcos.show', $arco->id) }}" class="btn btn-primary">Ver detalles</a>
+                        <a href="{{ route('arcos.show', $arco->id) }}" class="btn btn-secondary">Ver detalles</a>
                     </div>
                 </div>
             </div>

@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Arcos</a>
+                    <a class="nav-link" href="{{ route('arcos.index') }}">Arcos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('gallery') }}">Galería</a>
@@ -24,9 +24,9 @@
             <ul class="navbar-nav ms-auto">
                 <!-- Si estamos registrados podemos acceder al perfil o cerrar sesión -->
                 @auth
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="{{ route('profile.edit') }}">Perfil</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
