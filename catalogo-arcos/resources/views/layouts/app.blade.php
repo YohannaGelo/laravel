@@ -28,7 +28,7 @@
 
     <!-- Footer -->
     <footer>
-        
+    @include('layouts.footer')
     </footer>
 
     <!-- Bootstrap JS y dependencias -->

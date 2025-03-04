@@ -21,6 +21,30 @@
                 <div class="card-body">
                     <p class="card-title">{{ $imagen->nombre }}</p>
                 </div>
+
+                @if(Auth::check())
+                <form action="{{ route('comments.store', $imagen) }}" method="POST">
+                    @csrf
+                    <textarea name="contenido" class="form-control mb-2" placeholder="Escribe un comentario..." required></textarea>
+                    <button type="submit" class="btn btn-primary btn-sm">Comentar</button>
+                </form>
+                @endif
+
+                @if($imagen->comments->count())
+                <div class="mt-3">
+                    <h5>Comentarios:</h5>
+                    <ul class="list-group">
+                        @foreach($imagen->comments as $comment)
+                        <li class="list-group-item">
+                            <strong>{{ $comment->user->name }}:</strong> {{ $comment->contenido }}
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
+
+
             </div>
         </div>
         @endforeach

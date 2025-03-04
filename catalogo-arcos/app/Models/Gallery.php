@@ -10,4 +10,9 @@ class Gallery extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'image'];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

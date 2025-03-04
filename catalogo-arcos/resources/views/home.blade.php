@@ -8,27 +8,19 @@
         <img src="{{ asset('img/bannerInicio.jpg') }}" class="img-fluid rounded" alt="Banner de la galería">
     </div>
 
-    <h1 class="my-4">Bienvenidos</h1>
-    @auth
-    <a href="{{ route('arcos.create') }}" class="btn btn-secondary mb-4">Agregar Arco</a>
-    @endauth
-    <div class="row">
-        @foreach ($arcos as $arco)
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                @if ($arco->imagen && file_exists(public_path('storage/' . $arco->imagen)))
-                <img src="{{ asset('storage/' . $arco->imagen) }}" class="card-img-top" alt="{{ $arco->nombre }}">
-                @else
-                <div class="card-img-top bg-secondary text-white text-center py-5">Sin imagen</div>
-                @endif
-                <div class="card-body">
-                    <h5 class="card-title">{{ $arco->nombre }}</h5>
-                    <p class="card-text">{{ $arco->tipo }}</p>
-                    <a href="{{ route('arcos.show', $arco->id) }}" class="btn btn-secondary">Ver detalles</a>
-                </div>
-            </div>
-        </div>
-        @endforeach
+    <h1 class="my-4 text-center">Bienvenidos a Nuestra Pasión por el Tiro con Arco</h1>
+
+    <p class="text-center">Esta es una página dedicada a nuestra afición familiar por el tiro con arco. 
+        Aquí compartimos nuestros mejores momentos y también iremos recopilando información sobre los 
+        diferentes tipos de arcos. ¡Gracias por visitarnos!</p>
+
+    <div class="text-center my-4">
+        <a href="{{ route('gallery') }}" class="btn btn-secondary mx-2">Ver Galería Familiar</a>
+        
+        <a href="{{ route('arcos.index') }}" class="btn btn-dark mx-2">Gestionar Arcos</a>
+        
+    </div>
+        
     </div>
 </div>
 @endsection
