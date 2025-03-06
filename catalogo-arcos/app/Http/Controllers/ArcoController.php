@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Arco;
 use Illuminate\Support\Facades\Storage; // Importa Storage para manejar archivos
 
@@ -36,13 +35,21 @@ class ArcoController extends Controller
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string',
             'tipo' => 'required|string|max:255',
-            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validar la imagen
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validar la imagen principal
+            'curiosidad' => 'nullable|string', // Validar la curiosidad
+            'imagen_curiosidad' => 'nullable|url', // Validar la imagen de curiosidad
         ]);
 
-        // Guardar la imagen si existe
+        // Guardar la imagen principal si existe
         $imagenPath = null;
         if ($request->hasFile('imagen')) {
             $imagenPath = $request->file('imagen')->store('arcos', 'public'); // Guarda la imagen en storage/app/public/arcos
+        }
+
+        // Guardar la imagen de curiosidad si existe
+        $imagenCuriosidadPath = null;
+        if ($request->hasFile('imagen_curiosidad')) {
+            $imagenCuriosidadPath = $request->file('imagen_curiosidad')->store('curiosidades', 'public'); // Guarda la imagen en storage/app/public/curiosidades
         }
 
         // Crear un nuevo arco en la base de datos
@@ -51,6 +58,8 @@ class ArcoController extends Controller
             'descripcion' => $request->descripcion,
             'tipo' => $request->tipo,
             'imagen' => $imagenPath,
+            'curiosidad' => $request->curiosidad,
+            'imagen_curiosidad' => $request->imagen_curiosidad, 
         ]);
 
         // Volver a la vista con mensaje
@@ -85,13 +94,15 @@ class ArcoController extends Controller
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string',
             'tipo' => 'required|string|max:255',
-            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validar la imagen
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validar la imagen principal
+            'curiosidad' => 'nullable|string', // Validar la curiosidad
+            'imagen_curiosidad' => 'nullable|url',
         ]);
 
         // Buscar el arco por su ID
         $arco = Arco::findOrFail($id);
 
-        // Actualizar la imagen si existe una nueva
+        // Actualizar la imagen principal si existe una nueva
         if ($request->hasFile('imagen')) {
             // Eliminar la imagen anterior en caso de existir
             if ($arco->imagen) {
@@ -102,10 +113,22 @@ class ArcoController extends Controller
             $arco->imagen = $imagenPath;
         }
 
+        // Actualizar la imagen de curiosidad si existe una nueva
+        if ($request->hasFile('imagen_curiosidad')) {
+            // Eliminar la imagen de curiosidad anterior en caso de existir
+            if ($arco->imagen_curiosidad) {
+                Storage::disk('public')->delete($arco->imagen_curiosidad);
+            }
+            // Guardar la nueva imagen de curiosidad
+            $imagenCuriosidadPath = $request->file('imagen_curiosidad')->store('curiosidades', 'public');
+            $arco->imagen_curiosidad = $imagenCuriosidadPath;
+        }
+
         // Actualizar los demás campos
         $arco->nombre = $request->nombre;
         $arco->descripcion = $request->descripcion;
         $arco->tipo = $request->tipo;
+        $arco->imagen_curiosidad = $request->imagen_curiosidad; 
         $arco->save();
 
         // Redirigir a la lista de arcos con un mensaje de éxito
@@ -119,9 +142,14 @@ class ArcoController extends Controller
     {
         $arco = Arco::findOrFail($id); // Busca el arco por su ID
 
-        // Eliminar la imagen si existe
+        // Eliminar la imagen principal si existe
         if ($arco->imagen) {
             Storage::disk('public')->delete($arco->imagen);
+        }
+
+        // Eliminar la imagen de curiosidad si existe
+        if ($arco->imagen_curiosidad) {
+            Storage::disk('public')->delete($arco->imagen_curiosidad);
         }
 
         // Eliminar el arco de la base de datos

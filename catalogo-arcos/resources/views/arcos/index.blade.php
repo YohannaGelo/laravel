@@ -4,9 +4,10 @@
 
 @section('content')
 <div class="container">
-    <h1 class="my-4">Catálogo de Arcos</h1>
+    <h1 class="my-4 display-5">Conociendo Tipos de Arcos</h1>
+    <!-- Si estamos logueados... -->
     @auth
-        <a href="{{ route('arcos.create') }}" class="btn btn-secondary mb-4">Agregar Arco</a>
+        <a href="{{ route('arcos.create') }}" class="btn btn-secondary mb-4 shadow">Agregar Arco</a>
     @endauth
     <div class="row">
         @foreach ($arcos as $arco)
@@ -27,4 +28,29 @@
         @endforeach
     </div>
 </div>
+
+<!-- Botón flotante para subir -->
+<button id="scrollToTopBtn" class="btn btn-secondary rounded-circle shadow fs-5" style="position: fixed; bottom: 20px; right: 20px; display: none; transform: rotate(270deg);">
+    <i class="bi bi-heart-arrow"></i>
+</button>
+
+<script>
+    // Mostrar u ocultar el botón según la posición del scroll
+    window.onscroll = function() {
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollToTopBtn.style.display = 'block';
+        } else {
+            scrollToTopBtn.style.display = 'none';
+        }
+    };
+
+    // Función para subir al principio de la página
+    document.getElementById('scrollToTopBtn').addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Desplazamiento suave
+        });
+    });
+</script>
 @endsection

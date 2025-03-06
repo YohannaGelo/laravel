@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
+    <div class="container-fluid container">
         <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{ asset('img/logo_arcos.png') }}" alt="Logo" class="img-fluid" style="width: 60px; height: 60px;">
         </a>
@@ -9,19 +9,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Inicio</a>
+                    <a class="nav-link fs-5" href="{{ route('home') }}">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('arcos.index') }}">Arcos</a>
+                    <a class="nav-link fs-5" href="{{ route('arcos.index') }}">Arcos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('gallery') }}">Galería</a>
+                    <a class="nav-link fs-5" href="{{ route('gallery') }}">Galería</a>
                 </li>
                 <!-- Si estamos registrados... -->
                 @auth
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('arcos.create') }}">Agregar Arco</a>
-                </li>
+                <!-- <li class="nav-item btn btn-secondary p-0 ms-5 shadow">
+                    <a class="nav-link text-light" href="{{ route('arcos.create') }}">Agregar Arco</a>
+                </li> -->
                 @endauth
             </ul>
             <ul class="navbar-nav ms-auto">

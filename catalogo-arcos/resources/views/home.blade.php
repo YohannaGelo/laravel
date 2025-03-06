@@ -8,7 +8,7 @@
         <img src="{{ asset('img/bannerInicio.jpg') }}" class="img-fluid rounded" alt="Banner de la galería">
     </div>
 
-    <h1 class="my-4 text-center">Bienvenidos a Nuestra Pasión por el Tiro con Arco</h1>
+    <h1 class="my-4 text-center display-5">Bienvenidos a Nuestra Pasión por el Tiro con Arco</h1>
 
     <p class="text-center">Esta es una página dedicada a nuestra afición familiar por el tiro con arco. 
         Aquí compartimos nuestros mejores momentos y también iremos recopilando información sobre los 

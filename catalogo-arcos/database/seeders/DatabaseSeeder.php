@@ -23,13 +23,13 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'Pepe',
-            'email' => 'pepe@example.com',
+            'email' => 'pepe@gmail.com',
             'password' => Hash::make('pepe'),
         ]);
 
         User::create([
             'name' => 'Yohanna',
-            'email' => 'yohanna@example.com',
+            'email' => 'yohanna@gmail.com',
             'password' => Hash::make('yohanna'),
         ]);
 

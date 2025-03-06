@@ -17,6 +17,8 @@ return new class extends Migration
             $table->text('descripcion');
             $table->string('tipo'); // Ej: longbow, recurvo, compuesto
             $table->string('imagen')->nullable(); // Para guardar la ruta de la imagen
+            $table->text('curiosidad')->nullable(); 
+            $table->string('imagen_curiosidad')->nullable(); 
             $table->timestamps();
         });
     }
