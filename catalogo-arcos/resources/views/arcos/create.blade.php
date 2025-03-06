@@ -47,8 +47,8 @@
 
                         <!-- Botones -->
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="submit" class="btn btn-primary me-md-2">Guardar</button>
-                            <a href="{{ route('arcos.index') }}" class="btn btn-secondary">Cancelar</a>
+                            <button type="submit" class="btn btn-secondary me-md-2">Guardar</button>
+                            <a href="{{ route('arcos.index') }}" class="btn btn-dark">Cancelar</a>
                         </div>
                     </form>
                 </div>

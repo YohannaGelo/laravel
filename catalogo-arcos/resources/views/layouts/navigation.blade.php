@@ -33,16 +33,16 @@
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="nav-link btn btn-link">Cerrar Sesión</button>
+                        <button type="submit" class="nav-link btn btn-link fs-5">Cerrar Sesión</button>
                     </form>
                 </li>
                 @else
                 <!-- Sino podemos iniciar sesión o registrarnos -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                    <a class="nav-link fs-5" href="{{ route('login') }}">Iniciar Sesión</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
+                    <a class="nav-link fs-5" href="{{ route('register') }}">Registrarse</a>
                 </li>
                 @endauth
             </ul>

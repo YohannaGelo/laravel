@@ -15,11 +15,12 @@
             <p><strong>Tipo:</strong> {{ $arco->tipo }}</p>
             <p><strong>Descripción:</strong> {{ $arco->descripcion }}</p>
 
+            <!-- Card de curiosidad -->
             @if ($arco->curiosidad && $arco->imagen_curiosidad)
-                <div class="card mb-4 shadow-sm">
+                <div class="card col-8 col-sm-12 mb-4 shadow-sm">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="{{ $arco->imagen_curiosidad }}" class="img-fluid rounded-start" alt="Curiosidad sobre {{ $arco->nombre }}" style="height: 220px;">
+                            <img src="{{ $arco->imagen_curiosidad }}" class="img-fluid rounded-start" alt="Curiosidad sobre {{ $arco->nombre }}" style="height: 100%;">
                         </div>
                         <div class="col-md-8 d-flex align-items-center">
                             <div class="card-body">
